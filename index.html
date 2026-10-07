@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MPA | Markets, People &amp; Analytics</title>
+<meta name="description" content="MPA es una consultora boutique de investigación aplicada en empleo, longevidad, emprendimiento y política social. Applied research consultancy based in Santiago, Chile.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fira+Sans+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #14294d;
+    --steel: #5f82a8;
+    --ink: #1c2433;
+    --muted: #55617a;
+    --mist: #eef2f6;
+    --line: #d3dbe5;
+    --white: #ffffff;
+    --body: "Fira Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    --display: "Fira Sans Condensed", "Fira Sans", "Arial Narrow", Arial, sans-serif;
+    --wrap: 1120px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html[data-lang="es"] .en,
+  html[data-lang="en"] .es { display: none !important; }
+
+  a { color: var(--navy); }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--steel);
+    outline-offset: 3px;
+  }
+
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+
+  h1, h2, h3 { font-family: var(--display); color: var(--navy); margin: 0; line-height: 1.12; }
+  h1 { font-size: clamp(2.3rem, 5.4vw, 4rem); font-weight: 600; letter-spacing: -0.01em; max-width: 18ch; }
+  h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 600; }
+  h3 { font-size: 1.35rem; font-weight: 600; }
+  p { margin: 0; }
+
+  /* Header */
+  .site-header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; min-height: 76px;
+  }
+  .brand { display: flex; align-items: center; text-decoration: none; }
+  .brand img { height: 48px; width: auto; display: block; }
+  .wordmark { display: flex; align-items: center; gap: 14px; }
+  .wordmark[hidden] { display: none; }
+  .wordmark b {
+    font-family: var(--display); font-weight: 600; font-size: 2rem;
+    letter-spacing: 0.02em; color: var(--navy); line-height: 1;
+  }
+  .wordmark b i { font-style: normal; color: var(--steel); }
+  .wordmark span {
+    border-left: 2px solid var(--navy); padding-left: 14px;
+    font-family: var(--display); font-weight: 500; font-size: 0.98rem;
+    line-height: 1.15; color: var(--navy);
+  }
+  .nav { display: flex; align-items: center; gap: 28px; }
+  .nav a { text-decoration: none; font-size: 0.95rem; color: var(--ink); }
+  .nav a:hover { color: var(--steel); }
+  .lang {
+    font: inherit; font-size: 0.9rem; cursor: pointer;
+    background: none; color: var(--navy);
+    border: 1px solid var(--navy); border-radius: 2px; padding: 6px 12px;
+  }
+  .lang:hover { background: var(--navy); color: var(--white); }
+  @media (max-width: 820px) {
+    .nav a { display: none; }
+    .brand img { height: 40px; }
+  }
+
+  /* Hero */
+  .hero { padding: 88px 0 0; }
+  .hero .lede { margin-top: 28px; max-width: 62ch; font-size: 1.15rem; color: var(--muted); }
+  .hero .actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 500;
+    padding: 13px 24px; border-radius: 2px; border: 1px solid var(--navy);
+  }
+  .btn.solid { background: var(--navy); color: var(--white); }
+  .btn.solid:hover { background: #0d1d38; }
+  .btn.ghost { color: var(--navy); }
+  .btn.ghost:hover { background: var(--mist); }
+
+  /* M | P | A */
+  .pillars {
+    margin-top: 80px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 2px solid var(--navy);
+  }
+  .pillar { padding: 28px 32px 56px; border-left: 2px solid var(--navy); }
+  .pillar:first-child { border-left: 0; padding-left: 0; }
+  .pillar .letter {
+    font-family: var(--display); font-weight: 600; line-height: 0.9;
+    font-size: clamp(4.5rem, 11vw, 8.5rem); color: var(--navy); display: block;
+  }
+  .pillar:nth-child(2) .letter { color: var(--steel); }
+  .pillar h3 { margin-top: 10px; }
+  .pillar p { margin-top: 10px; color: var(--muted); font-size: 0.98rem; }
+  @media (max-width: 760px) {
+    .pillars { grid-template-columns: 1fr; }
+    .pillar { border-left: 0; border-top: 1px solid var(--line); padding: 24px 0 28px; display: grid; grid-template-columns: 84px 1fr; column-gap: 16px; }
+    .pillar:first-child { border-top: 0; }
+    .pillar .letter { grid-row: span 2; font-size: 4.5rem; }
+    .pillar h3 { margin-top: 6px; }
+  }
+
+  /* Sections */
+  .band { padding: 88px 0; }
+  .band.tint { background: var(--mist); }
+  .band > .wrap > .intro { margin-top: 16px; max-width: 64ch; color: var(--muted); }
+
+  /* Practice areas */
+  .areas { margin-top: 48px; border-top: 1px solid var(--line); }
+  .area {
+    display: grid; grid-template-columns: 1.05fr 1fr 1.25fr; gap: 40px;
+    padding: 40px 0; border-bottom: 1px solid var(--line);
+  }
+  .tags { display: flex; gap: 6px; margin-bottom: 14px; }
+  .tags span {
+    width: 26px; height: 26px; display: grid; place-items: center;
+    font-family: var(--display); font-weight: 600; font-size: 0.9rem;
+    border: 1px solid var(--line); color: #a9b4c4; border-radius: 2px;
+  }
+  .tags span.on { background: var(--navy); border-color: var(--navy); color: var(--white); }
+  .area .question { font-style: italic; color: var(--navy); font-size: 1.08rem; line-height: 1.5; }
+  .area ul { margin: 0; padding-left: 18px; }
+  .area li { margin-bottom: 6px; }
+  .area .basis { margin-top: 16px; font-size: 0.92rem; color: var(--muted); }
+  @media (max-width: 900px) {
+    .area { grid-template-columns: 1fr; gap: 18px; padding: 32px 0; }
+  }
+
+  /* Capabilities and principles */
+  .grid-4 { margin-top: 44px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .grid-2 { margin-top: 44px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 64px; }
+  .item h3 { font-size: 1.15rem; padding-top: 16px; border-top: 2px solid var(--navy); }
+  .item p { margin-top: 10px; color: var(--muted); font-size: 0.97rem; }
+  @media (max-width: 900px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .grid-4, .grid-2 { grid-template-columns: 1fr; } }
+
+  .clients { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); max-width: 78ch; }
+  .clients strong { color: var(--navy); font-weight: 600; }
+
+  /* Team */
+  .team { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .person { background: var(--white); padding: 32px 28px; border-top: 4px solid var(--navy); }
+  .person:nth-child(2) { border-top-color: var(--steel); }
+  .person .role { margin-top: 6px; font-size: 0.93rem; color: var(--steel); font-weight: 500; }
+  .person p.bio { margin-top: 16px; font-size: 0.97rem; }
+  .person a { display: inline-block; margin-top: 16px; font-size: 0.93rem; }
+  @media (max-width: 900px) { .team { grid-template-columns: 1fr; gap: 24px; } }
+
+  /* Publications */
+  .pubs { margin: 40px 0 0; padding: 0; list-style: none; max-width: 86ch; }
+  .pubs li { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 0.97rem; }
+  .pubs em { color: var(--navy); }
+
+  /* Contact */
+  .contact { background: var(--navy); color: var(--white); padding: 88px 0; }
+  .contact h2 { color: var(--white); max-width: 22ch; }
+  .contact p { margin-top: 18px; max-width: 60ch; color: #c9d4e3; }
+  .contact .mail {
+    display: inline-block; margin-top: 32px; font-family: var(--display);
+    font-size: clamp(1.4rem, 3vw, 2rem); color: var(--white);
+    text-decoration-color: var(--steel); text-underline-offset: 6px;
+  }
+  .contact .place { font-size: 0.95rem; }
+
+  footer { padding: 28px 0 40px; font-size: 0.85rem; color: var(--muted); }
+  footer p + p { margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="MPA, Markets, People &amp; Analytics">
+      <!-- Guarda el logo como logo.png en la misma carpeta que este archivo. -->
+      <img src="logo.png" alt="MPA Markets, People &amp; Analytics"
+           onerror="this.hidden=true;this.nextElementSibling.hidden=false;">
+      <span class="wordmark" hidden>
+        <b>M<i>P</i>A</b>
+        <span>Markets,<br>People &amp; Analytics</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#areas"><span class="es">Áreas</span><span class="en">Practice areas</span></a>
+      <a href="#enfoque"><span class="es">Cómo trabajamos</span><span class="en">How we work</span></a>
+      <a href="#equipo"><span class="es">Socios</span><span class="en">Partners</span></a>
+      <a href="#contacto"><span class="es">Contacto</span><span class="en">Contact</span></a>
+      <button class="lang" id="lang" type="button" aria-label="Cambiar idioma / Switch language">English</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>
+        <span class="es">Investigación aplicada para decisiones sobre empleo, empresas y política social.</span>
+        <span class="en">Applied research for decisions on jobs, firms, and social policy.</span>
+      </h1>
+      <p class="lede">
+        <span class="es">MPA es una consultora boutique fundada por tres investigadores con publicaciones en revistas internacionales y experiencia en directorios de empresas, política pública y organismos multilaterales. Trabajamos con gobiernos, organismos internacionales, empresas y fundaciones en Chile y América Latina.</span>
+        <span class="en">MPA is a boutique consultancy founded by three researchers who publish in international journals and have worked on corporate boards, in public policy, and with multilateral organizations. We work with governments, international organizations, companies, and foundations in Chile and Latin America.</span>
+      </p>
+      <div class="actions">
+        <a class="btn solid" href="#contacto"><span class="es">Conversemos sobre su proyecto</span><span class="en">Discuss your project</span></a>
+        <a class="btn ghost" href="#areas"><span class="es">Ver áreas de práctica</span><span class="en">See practice areas</span></a>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <span class="letter" aria-hidden="true">M</span>
+          <h3>Markets</h3>
+          <p>
+            <span class="es">Empresas, emprendimiento, innovación y productividad. Estudiamos cómo nacen, crecen y compiten las empresas, y qué políticas lo facilitan.</span>
+            <span class="en">Firms, entrepreneurship, innovation, and productivity. We study how firms start, grow, and compete, and which policies help them do so.</span>
+          </p>
+        </div>
+        <div class="pillar">
+          <span class="letter" aria-hidden="true">P</span>
+          <h3>People</h3>
+          <p>
+            <span class="es">Empleo, pobreza, envejecimiento y migración. Medimos cómo viven y trabajan las personas, y quiénes quedan atrás.</span>
+            <span class="en">Employment, poverty, aging, and migration. We measure how people live and work, and who is left behind.</span>
+          </p>
+        </div>
+        <div class="pillar">
+          <span class="letter" aria-hidden="true">A</span>
+          <h3>Analytics</h3>
+          <p>
+            <span class="es">Indicadores, encuestas y evaluación de impacto. Aplicamos métodos publicados y replicables al problema de cada cliente.</span>
+            <span class="en">Indicators, surveys, and impact evaluation. We apply published, replicable methods to each client's problem.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint" id="areas">
+    <div class="wrap">
+      <h2><span class="es">Áreas de práctica</span><span class="en">Practice areas</span></h2>
+      <p class="intro">
+        <span class="es">Cuatro áreas en las que los socios tienen investigación publicada y experiencia directa. Las letras indican qué pilares de MPA combina cada una.</span>
+        <span class="en">Four areas in which the partners have published research and direct experience. The letters show which MPA pillars each area combines.</span>
+      </p>
+
+      <div class="areas">
+
+        <article class="area">
+          <div>
+            <div class="tags" aria-label="Markets, People, Analytics"><span class="on">M</span><span class="on">P</span><span class="on">A</span></div>
+            <h3><span class="es">Calidad del empleo y productividad</span><span class="en">Employment quality and productivity</span></h3>
+          </div>
+          <p class="question">
+            <span class="es">«¿Qué tan buenos son los empleos en nuestra empresa, sector o región, y cómo se relacionan con la productividad?»</span>
+            <span class="en">“How good are the jobs in our company, sector, or region, and how do they relate to productivity?”</span>
+          </p>
+          <div>
+            <ul>
+              <li><span class="es">Índices de calidad del empleo a medida para empresas, sectores y territorios.</span><span class="en">Tailored employment quality indices for companies, sectors, and territories.</span></li>
+              <li><span class="es">Diagnósticos de brechas laborales y de productividad.</span><span class="en">Diagnostics of labor and productivity gaps.</span></li>
+              <li><span class="es">Evaluación de políticas y programas de empleo.</span><span class="en">Evaluation of employment policies and programs.</span></li>
+              <li><span class="es">Indicadores laborales para reportes de sostenibilidad.</span><span class="en">Labor indicators for sustainability reporting.</span></li>
+            </ul>
+            <p class="basis">
+              <span class="es">Respaldo: metodología multidimensional de calidad del empleo publicada en World Development, Regional Studies y Social Indicators Research, y aplicada a América Latina en un estudio publicado por CEPAL.</span>
+              <span class="en">Basis: a multidimensional employment quality methodology published in World Development, Regional Studies, and Social Indicators Research, and applied to Latin America in a study published by ECLAC.</span>
+            </p>
+          </div>
+        </article>
+
+        <article class="area">
+          <div>
+            <div class="tags" aria-label="Markets, People"><span class="on">M</span><span class="on">P</span><span>A</span></div>
+            <h3><span class="es">Longevidad y cambio demográfico</span><span class="en">Longevity and demographic change</span></h3>
+          </div>
+          <p class="question">
+            <span class="es">«¿Cómo cambiarán nuestra fuerza laboral y nuestros clientes a medida que la población envejece?»</span>
+            <span class="en">“How will our workforce and our customers change as the population ages?”</span>
+          </p>
+          <div>
+            <ul>
+              <li><span class="es">Diagnósticos de envejecimiento de la fuerza laboral.</span><span class="en">Workforce aging diagnostics.</span></li>
+              <li><span class="es">Estrategias de talento senior y carreras laborales largas.</span><span class="en">Strategies for senior talent and longer working lives.</span></li>
+              <li><span class="es">Estudios sobre participación laboral y emprendimiento de personas mayores.</span><span class="en">Studies on labor force participation and entrepreneurship among older adults.</span></li>
+              <li><span class="es">Análisis para políticas de empleo, pensiones y cuidados.</span><span class="en">Analysis for employment, pension, and care policies.</span></li>
+            </ul>
+            <p class="basis">
+              <span class="es">Respaldo: dirección del programa Conocimiento e Investigación en Personas Mayores (CIPEM) e investigación conjunta de los tres socios sobre emprendimiento senior y edadismo.</span>
+              <span class="en">Basis: leadership of the research program on older adults (CIPEM) and joint research by the three partners on senior entrepreneurship and ageism.</span>
+            </p>
+          </div>
+        </article>
+
+        <article class="area">
+          <div>
+            <div class="tags" aria-label="Markets, Analytics"><span class="on">M</span><span>P</span><span class="on">A</span></div>
+            <h3><span class="es">Ecosistemas de emprendimiento e innovación</span><span class="en">Entrepreneurship and innovation ecosystems</span></h3>
+          </div>
+          <p class="question">
+            <span class="es">«¿Qué funciona en nuestro ecosistema y qué programas merecen financiamiento?»</span>
+            <span class="en">“What works in our ecosystem, and which programs deserve funding?”</span>
+          </p>
+          <div>
+            <ul>
+              <li><span class="es">Diagnósticos de ecosistemas regionales de emprendimiento.</span><span class="en">Diagnostics of regional entrepreneurial ecosystems.</span></li>
+              <li><span class="es">Evaluación de programas de apoyo, incubadoras y aceleradoras.</span><span class="en">Evaluation of support programs, incubators, and accelerators.</span></li>
+              <li><span class="es">Diseño de políticas de emprendimiento y desarrollo productivo.</span><span class="en">Design of entrepreneurship and productive development policies.</span></li>
+              <li><span class="es">Estudios de emprendimiento migrante, senior y rural.</span><span class="en">Studies on migrant, senior, and rural entrepreneurship.</span></li>
+            </ul>
+            <p class="basis">
+              <span class="es">Respaldo: coordinación nacional y dirección académica de GEM Chile, participación en el Comité de Ecosistemas de CORFO y en la Comisión Nacional de Productividad, y publicaciones en Research Policy, Entrepreneurship &amp; Regional Development y Small Business Economics.</span>
+              <span class="en">Basis: national coordination and academic direction of GEM Chile, membership of CORFO's Ecosystems Committee and Chile's National Productivity Commission, and publications in Research Policy, Entrepreneurship &amp; Regional Development, and Small Business Economics.</span>
+            </p>
+          </div>
+        </article>
+
+        <article class="area">
+          <div>
+            <div class="tags" aria-label="People, Analytics"><span>M</span><span class="on">P</span><span class="on">A</span></div>
+            <h3><span class="es">Pobreza multidimensional y política social</span><span class="en">Multidimensional poverty and social policy</span></h3>
+          </div>
+          <p class="question">
+            <span class="es">«¿Quiénes son pobres en nuestro territorio, en qué dimensiones, y dónde debe focalizarse el gasto?»</span>
+            <span class="en">“Who is poor in our territory, in which dimensions, and where should spending be targeted?”</span>
+          </p>
+          <div>
+            <ul>
+              <li><span class="es">Diseño y actualización de índices de pobreza multidimensional nacionales, regionales y municipales.</span><span class="en">Design and updating of national, regional, and municipal multidimensional poverty indices.</span></li>
+              <li><span class="es">Medición de pobreza crónica y de su evolución en el tiempo.</span><span class="en">Measurement of chronic poverty and its change over time.</span></li>
+              <li><span class="es">Focalización de programas y monitoreo de metas sociales.</span><span class="en">Program targeting and monitoring of social goals.</span></li>
+              <li><span class="es">Formación de equipos técnicos públicos.</span><span class="en">Training for public technical teams.</span></li>
+            </ul>
+            <p class="basis">
+              <span class="es">Respaldo: método Alkire-Foster, investigación publicada sobre pobreza multidimensional crónica y programas de formación liderados para OPHI (Universidad de Oxford) en más de una docena de países.</span>
+              <span class="en">Basis: the Alkire-Foster method, published research on chronic multidimensional poverty, and training programs led for OPHI (University of Oxford) in more than a dozen countries.</span>
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="capacidades">
+    <div class="wrap">
+      <h2><span class="es">Qué entregamos</span><span class="en">What we deliver</span></h2>
+      <div class="grid-4">
+        <div class="item">
+          <h3><span class="es">Medición e indicadores</span><span class="en">Measurement and indicators</span></h3>
+          <p><span class="es">Índices multidimensionales, líneas de base y sistemas de monitoreo que pueden actualizarse sin depender de nosotros.</span><span class="en">Multidimensional indices, baselines, and monitoring systems that can be updated without depending on us.</span></p>
+        </div>
+        <div class="item">
+          <h3><span class="es">Evaluación</span><span class="en">Evaluation</span></h3>
+          <p><span class="es">Evaluaciones de diseño, de resultados y de impacto para programas públicos, corporativos y filantrópicos.</span><span class="en">Design, outcome, and impact evaluations for public, corporate, and philanthropic programs.</span></p>
+        </div>
+        <div class="item">
+          <h3><span class="es">Encuestas y datos</span><span class="en">Surveys and data</span></h3>
+          <p><span class="es">Diseño de encuestas, análisis de registros administrativos, análisis territorial y proyecciones.</span><span class="en">Survey design, analysis of administrative records, territorial analysis, and projections.</span></p>
+        </div>
+        <div class="item">
+          <h3><span class="es">Formación</span><span class="en">Training</span></h3>
+          <p><span class="es">Programas para equipos técnicos, directivos públicos y directorios, vinculados a los proyectos que realizamos.</span><span class="en">Programs for technical teams, public managers, and boards, linked to the projects we carry out.</span></p>
+        </div>
+      </div>
+      <p class="clients">
+        <strong><span class="es">Con quiénes trabajamos.</span><span class="en">Who we work with.</span></strong>
+        <span class="es">Ministerios, gobiernos regionales y municipios. Organismos multilaterales y agencias de cooperación. Empresas, gremios e instituciones financieras. Fundaciones y organizaciones filantrópicas.</span>
+        <span class="en">Ministries, regional governments, and municipalities. Multilateral organizations and cooperation agencies. Companies, industry associations, and financial institutions. Foundations and philanthropic organizations.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band tint" id="enfoque">
+    <div class="wrap">
+      <h2><span class="es">Cómo trabajamos</span><span class="en">How we work</span></h2>
+      <div class="grid-2">
+        <div class="item">
+          <h3><span class="es">Los socios hacen el trabajo</span><span class="en">The partners do the work</span></h3>
+          <p><span class="es">Tomamos pocos proyectos a la vez. Quien presenta la propuesta es quien diseña el estudio, analiza los datos y firma el informe.</span><span class="en">We take on few projects at a time. The person who presents the proposal is the one who designs the study, analyzes the data, and signs the report.</span></p>
+        </div>
+        <div class="item">
+          <h3><span class="es">Métodos con revisión de pares</span><span class="en">Peer-reviewed methods</span></h3>
+          <p><span class="es">Usamos metodologías que hemos publicado o que están establecidas en la literatura. Cada resultado indica sus supuestos y sus límites.</span><span class="en">We use methodologies that we have published or that are established in the literature. Every result states its assumptions and its limits.</span></p>
+        </div>
+        <div class="item">
+          <h3><span class="es">Independencia</span><span class="en">Independence</span></h3>
+          <p><span class="es">Antes de cada proyecto declaramos por escrito cualquier conflicto de interés de los socios, incluidos sus cargos en directorios, y nos inhabilitamos cuando corresponde.</span><span class="en">Before each project we disclose in writing any conflict of interest of the partners, including their board positions, and we recuse ourselves when appropriate.</span></p>
+        </div>
+        <div class="item">
+          <h3><span class="es">Capacidades que quedan en el cliente</span><span class="en">Capacity that stays with the client</span></h3>
+          <p><span class="es">Entregamos datos, código y documentación junto con el informe, y formamos al equipo que seguirá usando los instrumentos.</span><span class="en">We hand over data, code, and documentation together with the report, and we train the team that will keep using the instruments.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint" id="equipo" style="padding-top:0">
+    <div class="wrap">
+      <h2><span class="es">Socios</span><span class="en">Partners</span></h2>
+      <div class="team">
+
+        <article class="person">
+          <h3>Vesna Mandakovic</h3>
+          <p class="role"><span class="es">Emprendimiento, productividad y gobierno corporativo</span><span class="en">Entrepreneurship, productivity, and corporate governance</span></p>
+          <p class="bio">
+            <span class="es">Doctora en Economía por la Pontificia Universidad Católica de Chile y profesora asociada de la Universidad del Desarrollo. Fue consejera de la Comisión Nacional de Productividad y del Comité de Ecosistemas de CORFO, y directora académica de GEM Chile. Es directora independiente de empresas y ha presidido comités de ESG y de riesgo en instituciones financieras.</span>
+            <span class="en">Ph.D. in Economics from Pontificia Universidad Católica de Chile and Associate Professor at Universidad del Desarrollo. She served on Chile's National Productivity Commission and CORFO's Ecosystems Committee, and was Academic Director of GEM Chile. She is an independent company director and has chaired ESG and risk committees in financial institutions.</span>
+          </p>
+          <a href="https://www.linkedin.com/in/vesna-mandakovic/" rel="noopener">LinkedIn</a>
+        </article>
+
+        <article class="person">
+          <h3>Carlos Poblete</h3>
+          <p class="role"><span class="es">Comportamiento emprendedor y ecosistemas</span><span class="en">Entrepreneurial behavior and ecosystems</span></p>
+          <p class="bio">
+            <span class="es">Ph.D. en Emprendimiento por la University of Essex y profesor asociado de la Universidad del Desarrollo, donde dirige el Doctorado en Economía de Negocios. Fue coordinador nacional de GEM Chile y es investigador responsable del proyecto GUESSS en su universidad. Investiga las decisiones de los emprendedores y el emprendimiento de migrantes, personas mayores y comunidades rurales.</span>
+            <span class="en">Ph.D. in Entrepreneurship from the University of Essex and Associate Professor at Universidad del Desarrollo, where he directs the Ph.D. in Business Economics. He was National Coordinator of GEM Chile and leads the GUESSS project at his university. His research covers entrepreneurs' decisions and entrepreneurship among migrants, older adults, and rural communities.</span>
+          </p>
+          <a href="https://www.linkedin.com/in/carlos-poblete/" rel="noopener">LinkedIn</a>
+        </article>
+
+        <article class="person">
+          <h3>Mauricio Apablaza</h3>
+          <p class="role"><span class="es">Pobreza, empleo y medición multidimensional</span><span class="en">Poverty, employment, and multidimensional measurement</span></p>
+          <p class="bio">
+            <span class="es">Ph.D. en Economía por la University of Nottingham. Es director de investigación de la Facultad de Gobierno de la Universidad del Desarrollo, investigador asociado de OPHI (Universidad de Oxford) y visiting fellow del International Inequalities Institute de LSE. Dirige el programa CIPEM sobre personas mayores y ha sido consultor para el Banco Mundial, PNUD, UNICEF y OCDE.</span>
+            <span class="en">Ph.D. in Economics from the University of Nottingham. He is Director of Research at the School of Government of Universidad del Desarrollo, Research Associate at OPHI (University of Oxford), and Visiting Fellow at the LSE International Inequalities Institute. He directs the CIPEM program on older adults and has consulted for the World Bank, UNDP, UNICEF, and the OECD.</span>
+          </p>
+          <a href="https://www.linkedin.com/in/m-apablaza/" rel="noopener">LinkedIn</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="publicaciones">
+    <div class="wrap">
+      <h2><span class="es">Investigación seleccionada de los socios</span><span class="en">Selected research by the partners</span></h2>
+      <ul class="pubs">
+        <li>Sehnbruch, K., González, P., Apablaza, M., Méndez, R., &amp; Arriagada, V. (2020). The Quality of Employment (QoE) in nine Latin American countries: A multidimensional perspective. <em>World Development</em>, 127.</li>
+        <li>Apablaza, M., Sehnbruch, K., González, P., &amp; Méndez, R. (2023). Regional inequality in multidimensional quality of employment: Insights from Chile, 1996–2017. <em>Regional Studies</em>, 57(3), 416–433.</li>
+        <li>Alkire, S., Apablaza, M., Chakravarty, S., &amp; Yalonetzky, G. (2017). Measuring chronic multidimensional poverty. <em>Journal of Policy Modeling</em>, 39(6), 983–1006.</li>
+        <li>Muñoz, P., Kibler, E., Mandakovic, V., &amp; Amorós, J. E. (2022). Local entrepreneurial ecosystems as configural narratives: A new way of seeing and evaluating antecedents and outcomes. <em>Research Policy</em>, 51(9).</li>
+        <li>Mandakovic, V., Uriarte, S., &amp; Amorós, J. E. (2024). Hybrid entrepreneurs: The value of experience. <em>Journal of Small Business Management</em>, 62(6), 2935–2964.</li>
+        <li>Poblete, C., Mandakovic, V., &amp; Apablaza, M. (2023). “As if it were home”: An exploratory study of the role of homesickness among migrant entrepreneurs. <em>Entrepreneurship &amp; Regional Development</em>, 35(9–10), 905–937.</li>
+        <li>Poblete, C., Mandakovic, V., &amp; Apablaza, M. (2025). Shielded by business ownership? The role of senior entrepreneurship as a defense mechanism against ageism. <em>The Bottom Line</em>, 38(2).</li>
+        <li>Poblete, C., Mahn, D., Acuña, C., &amp; Rifo, F. (2026). Three faces of rural entrepreneurship: Policy, lifestyle, and sustainability in a Patagonian entrepreneurial ecosystem. <em>Small Business Economics</em>, 67(1).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <h2><span class="es">Cuéntenos qué decisión necesita tomar.</span><span class="en">Tell us what decision you need to make.</span></h2>
+      <p>
+        <span class="es">Una primera conversación con uno de los socios basta para saber si podemos ayudar. Si no somos el equipo adecuado, se lo diremos.</span>
+        <span class="en">A first conversation with one of the partners is enough to know whether we can help. If we are not the right team, we will tell you.</span>
+      </p>
+      <!-- REEMPLAZAR: correo de contacto definitivo -->
+      <a class="mail" href="mailto:contacto@mpa.example">contacto@mpa.example</a>
+      <p class="place">Santiago, Chile</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 MPA | Markets, People &amp; Analytics</p>
+    <p>
+      <span class="es">MPA es una firma independiente. Las afiliaciones académicas de los socios se mencionan solo con fines de identificación y no implican respaldo institucional.</span>
+      <span class="en">MPA is an independent firm. The partners' academic affiliations are listed for identification only and do not imply institutional endorsement.</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('lang');
+    function setLang(l) {
+      root.lang = l;
+      root.setAttribute('data-lang', l);
+      btn.textContent = l === 'es' ? 'English' : 'Español';
+      try { localStorage.setItem('mpa-lang', l); } catch (e) {}
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('mpa-lang'); } catch (e) {}
+    setLang(saved === 'en' ? 'en' : 'es');
+    btn.addEventListener('click', function () {
+      setLang(root.getAttribute('data-lang') === 'es' ? 'en' : 'es');
+    });
+  })();
+</script>
+</body>
+</html>
